@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>web</title>
+<!-- 1.) Load SAPUI5 (from a remote server), select theme and control library -->
+<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+	id="sap-ui-bootstrap" data-sap-ui-libs="sap.m, sap.ui.table"
+	data-sap-ui-theme="sap_fiori_3">
+		</script>
+
+	<script>
+
+	var oModel = new sap.ui.model.odata.v4.ODataModel({  synchronizationMode : "None", serviceUrl : "/odata/v4/catalog/" });
+	var oTable = new sap.ui.table.Table({ title: "My first table" });
+	oTable.addColumn(new sap.ui.table.Column({ label: "Text", template: "LOGTEXT" }));
+	oTable.setModel(oModel);
+	oTable.bindRows("/Interactions_Items");
+	oTable.placeAt("uiArea");
+
+	</script>
+	</head>
+	<body class="sapUiBody">
+		<div id="uiArea"></div>
+	</body>
+</html>

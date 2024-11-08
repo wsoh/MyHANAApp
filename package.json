@@ -5,7 +5,7 @@
     "repository": "<Add your repository here>",
     "license": "UNLICENSED",
     "dependencies": {
-        "@sap/cds-dk": "^4",
+        "@sap/cds-dk": "^3.5.1",
         "@sap/hana-client": "^2.19.20"
     },
     "devDependencies": {},
@@ -29,7 +29,9 @@
         },
         "odata": {
             "version": "v4"
-        }
+        },"hana": {
+		   "deploy-format": "hdbtable"
+		}
     },
     "files": [
         "db",

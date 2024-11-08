@@ -1,5 +1,5 @@
 ID: MyHANAApp
-_schema-version: "2.1"
+_schema-version: '2.1'
 version: 0.0.1
 modules:
   - name: MyHANAApp-db
@@ -19,15 +19,25 @@ modules:
     provides:
       - name: srv_api
         properties:
-          url: ${default-url}
+          url: '${default-url}'
     requires:
       - name: MyHANAApp-db-hdi-container
       - name: MyHANAApp-uaa
+  - name: web
+    type: html5
+    path: web
+    requires:
+      - name: srv_api
+        group: destinations
+        properties:
+          name: srv_api
+          url: '~{url}'
+          forwardAuthToken: true
 resources:
   - name: MyHANAApp-db-hdi-container
     type: com.sap.xs.hdi-container
     properties:
-      hdi-container-name: ${service-name}
+      hdi-container-name: '${service-name}'
   - name: MyHANAApp-uaa
     type: org.cloudfoundry.managed-service
     parameters:

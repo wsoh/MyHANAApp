@@ -1,0 +1,9 @@
+{
+	"welcomeFile": "index.html",
+	"authenticationMethod": "none",
+	"routes": [{
+		"source": "/odata/v4/catalog/(.*)",
+		"destination": "srv_api",
+		"csrfProtection": true
+	}]
+}
