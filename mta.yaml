@@ -22,7 +22,7 @@ modules:
           url: '${default-url}'
     requires:
       - name: MyHANAApp-db-hdi-container
-      - name: MyHANAApp-uaa
+      - name: app-uaa
   - name: web
     type: html5
     path: web
@@ -33,16 +33,13 @@ modules:
           name: srv_api
           url: '~{url}'
           forwardAuthToken: true
+      - name: app-uaa
 resources:
   - name: MyHANAApp-db-hdi-container
     type: com.sap.xs.hdi-container
     properties:
       hdi-container-name: '${service-name}'
-  - name: MyHANAApp-uaa
-    type: org.cloudfoundry.managed-service
+  - name: app-uaa
+    type: com.sap.xs.uaa-space
     parameters:
-      service-plan: default
-      service: xsuaa
-      config:
-        xsappname: MyHANAApp
-        tenant-mode: dedicated
+      path: xs-security.json
